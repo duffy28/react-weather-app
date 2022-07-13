@@ -18,9 +18,30 @@ export default function Search() {
   }
   return (
     <div>
-      <form onSubmit={getWeather}>
-        <input type="text" placeholder="Type city" onChange={getCity} />
-        <input type="submit" value="Search" />
+      <form className="search-form" onSubmit={getWeather}>
+        <div className="row">
+          <div className="col-6">
+            <input
+              className="form-control search-bar"
+              type="text"
+              name="location"
+              placeholder="Type city: "
+              autocomplete="off"
+              onChange={getCity}
+            />
+          </div>
+          <div className="col-3">
+            <input
+              className="form-control search-bttn"
+              type="submit"
+              value="Search 🔍"
+            />
+          </div>
+
+          <div className="col-3">
+            <button className="coord">Current Location</button>
+          </div>
+        </div>
       </form>
       <h4>{message}</h4>
     </div>
