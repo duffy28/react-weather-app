@@ -5,7 +5,7 @@ import Weather from "./Weather";
 
 export default function Search() {
   let [city, setCity] = useState("");
-  let [message, setMessage] = useState("");
+  let [message, setMessage] = useState(<Weather city="New York" />);
 
   function getCity(event) {
     event.preventDefault();
@@ -17,28 +17,26 @@ export default function Search() {
     setMessage(<Weather city={city} />);
   }
   return (
-    <div>
-      <form className="search-form" onSubmit={getWeather}>
+    <div className="Weather">
+      <form onSubmit={getWeather}>
         <div className="row">
+          <div className="col-3">
+            <div className="form-group">
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Type city: "
+                autocomplete="off"
+                onChange={getCity}
+              />
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="form-group">
+              <input className="form-control" type="submit" value="Search 🔍" />
+            </div>
+          </div>
           <div className="col-6">
-            <input
-              className="form-control search-bar"
-              type="text"
-              name="location"
-              placeholder="Type city: "
-              autocomplete="off"
-              onChange={getCity}
-            />
-          </div>
-          <div className="col-3">
-            <input
-              className="form-control search-bttn"
-              type="submit"
-              value="Search 🔍"
-            />
-          </div>
-
-          <div className="col-3">
             <button className="coord">Current Location</button>
           </div>
         </div>
