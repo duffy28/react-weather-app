@@ -11,8 +11,8 @@ export default function Weather(props) {
   let [humidity, setHumidity] = useState("");
   let [wind, setWind] = useState("");
   let [icon, setIcon] = useState("");
-  let apiKey = "84c62539d2ae6fa1489aa536b432ef2c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
+  let [forecast, setForecast] = useState("");
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=metric`;
 
   function formatDate(date) {
     let days = [
@@ -45,6 +45,7 @@ export default function Weather(props) {
     setIcon(
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+    setForecast(<Forecast city={props.city} />);
   }
 
   axios.get(apiUrl).then(getTemperature);
@@ -64,6 +65,7 @@ export default function Weather(props) {
         </div>
       </div>
       <img src={icon} alt="Weather icon" class="current-icon" />
+      <div>{forecast}</div>
     </div>
   );
 }
