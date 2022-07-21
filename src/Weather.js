@@ -14,6 +14,33 @@ export default function Weather(props) {
   let [forecast, setForecast] = useState("");
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=metric`;
 
+  let days = [
+    {
+      date: "1/1",
+      temp: 86,
+      icon: "http://openweathermap.org/img/wn/01n@2x.png",
+    },
+    {
+      date: "1/2",
+      temp: 82,
+      icon: "",
+    },
+    {
+      date: "1/3",
+      temp: 94,
+      icon: "",
+    },
+    {
+      date: "1/4",
+      temp: 83,
+      icon: "",
+    },
+    {
+      date: "1/5",
+      temp: 78,
+      icon: "",
+    },
+  ];
   function formatDate(date) {
     let days = [
       "Sunday",
@@ -45,7 +72,7 @@ export default function Weather(props) {
     setIcon(
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-    setForecast(<Forecast city={props.city} />);
+    setForecast(<Forecast city={props.city} days={days} />);
   }
 
   axios.get(apiUrl).then(getTemperature);
