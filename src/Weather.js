@@ -40,6 +40,11 @@ export default function Weather(props) {
       temp: 78,
       icon: "http://openweathermap.org/img/wn/01n@2x.png",
     },
+    {
+      date: "1/6",
+      temp: 85,
+      icon: "http://openweathermap.org/img/wn/01n@2x.png",
+    },
   ];
 
   function formatDate(date) {
@@ -74,7 +79,7 @@ export default function Weather(props) {
     setIcon(
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-    setForecast(<Forecast city={props.city} days={days} />);
+    setForecast();
   }
 
   axios.get(apiUrl).then(getTemperature);
@@ -94,7 +99,9 @@ export default function Weather(props) {
         </div>
       </div>
       <img src={icon} alt="Weather icon" className="current-icon" />
-      <div>{forecast}</div>
+      <div>
+        <Forecast days={days} />
+      </div>
     </div>
   );
 }
