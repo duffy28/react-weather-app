@@ -12,7 +12,7 @@ export default function Weather(props) {
   let [wind, setWind] = useState("");
   let [icon, setIcon] = useState("");
   let [forecast, setForecast] = useState("");
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=imperial`;
 
   let days = [
     {
@@ -23,24 +23,25 @@ export default function Weather(props) {
     {
       date: "1/2",
       temp: 82,
-      icon: "",
+      icon: "http://openweathermap.org/img/wn/01n@2x.png",
     },
     {
       date: "1/3",
       temp: 94,
-      icon: "",
+      icon: "http://openweathermap.org/img/wn/01n@2x.png",
     },
     {
       date: "1/4",
       temp: 83,
-      icon: "",
+      icon: "http://openweathermap.org/img/wn/01n@2x.png",
     },
     {
       date: "1/5",
       temp: 78,
-      icon: "",
+      icon: "http://openweathermap.org/img/wn/01n@2x.png",
     },
   ];
+
   function formatDate(date) {
     let days = [
       "Sunday",
@@ -65,6 +66,7 @@ export default function Weather(props) {
   }
 
   function getTemperature(response) {
+    console.log(response);
     setTemperature(Math.round(response.data.main.temp));
     setDescription(response.data.weather[0].description);
     setHumidity(response.data.main.humidity);
@@ -91,7 +93,7 @@ export default function Weather(props) {
           <h5>Wind: {wind}mph</h5>
         </div>
       </div>
-      <img src={icon} alt="Weather icon" class="current-icon" />
+      <img src={icon} alt="Weather icon" className="current-icon" />
       <div>{forecast}</div>
     </div>
   );

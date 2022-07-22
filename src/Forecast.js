@@ -1,25 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Forecast(props) {
-  let [message, setMessage] = useState("");
-
-  function getForecast() {
-    setMessage(
+  return (
+    <div>
       <ul>
         {props.days.map(function(day, index) {
           return (
-            (<li key={index}>{day.date}</li>),
-            (<li key={index}>{day.temp}</li>),
-            (
-              <li key={index}>
-                <img src={day.icon} />
-              </li>
-            )
+            <li key={index}>
+              <ul className="row">
+                <li className="col-4">{day.date}</li>
+                <li className="col-4">{day.icon}</li>
+                <li className="col-4">{day.temp}</li>
+              </ul>
+            </li>
           );
         })}
       </ul>
-    );
-  }
-
-  return <div>{message}</div>;
+    </div>
+  );
 }

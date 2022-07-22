@@ -26,7 +26,7 @@ export default function Search() {
                 className="form-control"
                 type="text"
                 placeholder="Type city: "
-                autocomplete="off"
+                autoComplete="off"
                 onChange={getCity}
               />
             </div>
