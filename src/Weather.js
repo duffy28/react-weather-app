@@ -79,7 +79,7 @@ export default function Weather(props) {
     setIcon(
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-    setForecast();
+    setForecast(<Forecast days={days} />);
   }
 
   axios.get(apiUrl).then(getTemperature);
@@ -99,9 +99,7 @@ export default function Weather(props) {
         </div>
       </div>
       <img src={icon} alt="Weather icon" className="current-icon" />
-      <div>
-        <Forecast days={days} />
-      </div>
+      <div>{forecast}</div>
     </div>
   );
 }
