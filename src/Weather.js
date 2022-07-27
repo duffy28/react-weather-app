@@ -18,32 +18,32 @@ export default function Weather(props) {
     {
       date: "1/1",
       temp: 86,
-      icon: "http://openweathermap.org/img/wn/01n@2x.png",
+      icon: "03d",
     },
     {
       date: "1/2",
       temp: 82,
-      icon: "http://openweathermap.org/img/wn/01n@2x.png",
+      icon: "04d",
     },
     {
       date: "1/3",
       temp: 94,
-      icon: "http://openweathermap.org/img/wn/01n@2x.png",
+      icon: "10d",
     },
     {
       date: "1/4",
       temp: 83,
-      icon: "http://openweathermap.org/img/wn/01n@2x.png",
+      icon: "10n",
     },
     {
       date: "1/5",
       temp: 78,
-      icon: "http://openweathermap.org/img/wn/01n@2x.png",
+      icon: "01n",
     },
     {
       date: "1/6",
       temp: 85,
-      icon: "http://openweathermap.org/img/wn/01n@2x.png",
+      icon: "13d",
     },
   ];
 

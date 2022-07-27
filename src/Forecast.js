@@ -9,13 +9,14 @@ export default function Forecast(props) {
           return (
             <li key={index} className="col-2">
               <div>
-                <ul>
-                  <li>{day.date}</li>
-                  <li>
-                    <img src={day.icon} alt="Weather Icon" />
-                  </li>
-                  <li>{day.temp}</li>
-                </ul>
+                <div>{day.date}</div>
+                <div>
+                  <img
+                    src={`http://openweathermap.org/img/wn/${day.icon}@2x.png`}
+                    alt="Weather Icon"
+                  />
+                </div>
+                <div>{day.temp}°</div>
               </div>
             </li>
           );
