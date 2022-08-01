@@ -5,11 +5,11 @@ import "./Weather.css";
 
 export default function Weather(props) {
   let now = new Date();
-  let [temperature, setTemperature] = useState("");
-  let [description, setDescription] = useState("");
-  let [humidity, setHumidity] = useState("");
-  let [wind, setWind] = useState("");
-  let [icon, setIcon] = useState("");
+  let [temperature, setTemperature] = useState("96");
+  let [description, setDescription] = useState("Sunny");
+  let [humidity, setHumidity] = useState("15");
+  let [wind, setWind] = useState("8");
+  let [icon, setIcon] = useState("http://openweathermap.org/img/wn/01d@2x.png");
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=imperial`;
 
   function formatDate(date) {
