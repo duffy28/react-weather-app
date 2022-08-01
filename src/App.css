@@ -6,7 +6,7 @@
 body {
   background: var(--bg-color);
 }
-.container {
+.app {
   width: 65%;
   margin: 40px auto;
   padding: 80px;
@@ -14,4 +14,11 @@ body {
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 10px 10px 10px rgba(48, 143, 238, 0.1);
+}
+.source-link {
+  text-align: center;
+}
+.git-link {
+  text-decoration: none;
+  color: rgb(0, 87, 185);
 }
