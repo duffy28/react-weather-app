@@ -7,6 +7,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
+    <p>
+      <a href="https://github.com/duffy28/react-weather-app">
+        Open-source code
+      </a>{" "}
+      by Shaun Duffy
+    </p>
   </React.StrictMode>
 );
 
