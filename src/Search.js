@@ -2,10 +2,45 @@ import React, { useState } from "react";
 
 import "./Search.css";
 import Weather from "./Weather";
+import Forecast from "./Forecast";
 
 export default function Search() {
+  let days = [
+    {
+      date: "1/1",
+      temp: 86,
+      icon: "03d",
+    },
+    {
+      date: "1/2",
+      temp: 82,
+      icon: "04d",
+    },
+    {
+      date: "1/3",
+      temp: 94,
+      icon: "10d",
+    },
+    {
+      date: "1/4",
+      temp: 83,
+      icon: "10n",
+    },
+    {
+      date: "1/5",
+      temp: 78,
+      icon: "01n",
+    },
+    {
+      date: "1/6",
+      temp: 85,
+      icon: "13d",
+    },
+  ];
+
   let [city, setCity] = useState("");
-  let [message, setMessage] = useState(<Weather city="New York" />);
+  let [weather, setWeather] = useState(<Weather city="New York" />);
+  let [forecast, setForecast] = useState(<Forecast days={days} />);
 
   function getCity(event) {
     event.preventDefault();
@@ -14,13 +49,14 @@ export default function Search() {
 
   function getWeather(event) {
     event.preventDefault();
-    setMessage(<Weather city={city} />);
+    setWeather(<Weather city={city} />);
+    setForecast(<Forecast days={days} />);
   }
   return (
     <div className="Weather">
       <form onSubmit={getWeather}>
         <div className="row">
-          <div className="col-3">
+          <div className="col-5">
             <div className="form-group">
               <input
                 className="form-control"
@@ -36,12 +72,14 @@ export default function Search() {
               <input className="form-control" type="submit" value="Search 🔍" />
             </div>
           </div>
-          <div className="col-6">
+          <div className="col-4">
             <button className="coord">Current Location</button>
           </div>
         </div>
       </form>
-      <h4>{message}</h4>
+      <div>{weather}</div>
+      <br />
+      <div>{forecast}</div>
     </div>
   );
 }

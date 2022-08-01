@@ -6,7 +6,7 @@ import Search from "./Search";
 export default function App() {
   return (
     <div className="container">
-      <div className="app">
+      <div className="App">
         <Search />
       </div>
       <p className="source-link">

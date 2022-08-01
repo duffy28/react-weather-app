@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import "./Weather.css";
-import Forecast from "./Forecast";
 
 export default function Weather(props) {
   let now = new Date();
@@ -11,41 +10,7 @@ export default function Weather(props) {
   let [humidity, setHumidity] = useState("");
   let [wind, setWind] = useState("");
   let [icon, setIcon] = useState("");
-  let [forecast, setForecast] = useState("");
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=imperial`;
-
-  let days = [
-    {
-      date: "1/1",
-      temp: 86,
-      icon: "03d",
-    },
-    {
-      date: "1/2",
-      temp: 82,
-      icon: "04d",
-    },
-    {
-      date: "1/3",
-      temp: 94,
-      icon: "10d",
-    },
-    {
-      date: "1/4",
-      temp: 83,
-      icon: "10n",
-    },
-    {
-      date: "1/5",
-      temp: 78,
-      icon: "01n",
-    },
-    {
-      date: "1/6",
-      temp: 85,
-      icon: "13d",
-    },
-  ];
 
   function formatDate(date) {
     let days = [
@@ -79,7 +44,6 @@ export default function Weather(props) {
     setIcon(
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-    setForecast(<Forecast days={days} />);
   }
 
   axios.get(apiUrl).then(getTemperature);
@@ -99,7 +63,6 @@ export default function Weather(props) {
         </div>
       </div>
       <img src={icon} alt="Weather icon" className="current-icon" />
-      <div>{forecast}</div>
     </div>
   );
 }
