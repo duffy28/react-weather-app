@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 
 import "./Weather.css";
 
 export default function Weather(props) {
-  const [weatherData, setWeatherData] = useState({ ready: false });
-
   let now = new Date();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=imperial`;
 
-  function formatDate(date) {
+  function formatDate() {
     let days = [
       "Sunday",
       "Monday",
@@ -32,42 +28,21 @@ export default function Weather(props) {
     return message;
   }
 
-  function getWeather(response) {
-    console.log(response);
-    setWeatherData({
-      temperature: Math.round(response.data.main.temp),
-      description: response.data.weather[0].description,
-      humidity: response.data.main.humidity,
-      wind: response.data.wind.speed,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      ready: true,
-    });
-  }
-
-  if (weatherData.ready) {
-    return (
-      <div className="weather">
-        <div className="row">
-          <div className="temp-box col-8">
-            <h1 className="text-capitalize">{props.city}</h1>
-            <h3>{formatDate()}</h3>
-            <h3 className="text-capitalize">{weatherData.description}</h3>
-            <h2 className="temp">{weatherData.temperature} °F</h2>
-          </div>
-          <div className="data-box col-4">
-            <h5>Humidity: {weatherData.humidity}%</h5>
-            <h5>Wind: {weatherData.wind}mph</h5>
-          </div>
+  return (
+    <div className="weather">
+      <div className="row">
+        <div className="temp-box col-8">
+          <h1 className="text-capitalize">{props.data.city}</h1>
+          <h3>{formatDate()}</h3>
+          <h3 className="text-capitalize">{props.data.description}</h3>
+          <h2 className="temp">{props.data.temperature} °F</h2>
         </div>
-        <img
-          src={weatherData.icon}
-          alt="Weather icon"
-          className="current-icon"
-        />
+        <div className="data-box col-4">
+          <h5>Humidity: {props.data.humidity}%</h5>
+          <h5>Wind: {props.data.wind} mph</h5>
+        </div>
       </div>
-    );
-  } else {
-    axios.get(apiUrl).then(getWeather);
-    return "Loading Data...";
-  }
+      <img src={props.data.icon} alt="Weather icon" className="current-icon" />
+    </div>
+  );
 }
