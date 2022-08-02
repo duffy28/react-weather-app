@@ -4,7 +4,6 @@ import "./Weather.css";
 
 export default function Weather(props) {
   let now = new Date();
-
   function formatDate() {
     let days = [
       "Sunday",

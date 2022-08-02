@@ -45,8 +45,12 @@ export default function Search() {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=imperial`;
 
   function getCity(event) {
-    event.preventDefault();
     setCity(event.target.value);
+  }
+
+  function newCity(event) {
+    event.preventDefault();
+    axios.get(apiUrl).then(getWeather);
   }
 
   function getWeather(response) {
@@ -61,11 +65,6 @@ export default function Search() {
       ready: true,
     });
     setForecast(<Forecast days={days} />);
-  }
-
-  function newCity(event) {
-    event.preventDefault();
-    axios.get(apiUrl).then(getWeather);
   }
 
   if (weatherData.ready) {
