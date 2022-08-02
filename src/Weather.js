@@ -4,12 +4,10 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather(props) {
+  const [ready, setReady] = useState(false);
+  const [weatherData, setWeatherData] = useState({});
+
   let now = new Date();
-  let [temperature, setTemperature] = useState("96");
-  let [description, setDescription] = useState("Sunny");
-  let [humidity, setHumidity] = useState("15");
-  let [wind, setWind] = useState("8");
-  let [icon, setIcon] = useState("http://openweathermap.org/img/wn/01d@2x.png");
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=7b9b95b30c94fea1c4bec4ee3672341d&units=imperial`;
 
   function formatDate(date) {
@@ -35,34 +33,42 @@ export default function Weather(props) {
     return message;
   }
 
-  function getTemperature(response) {
+  function getWeather(response) {
     console.log(response);
-    setTemperature(Math.round(response.data.main.temp));
-    setDescription(response.data.weather[0].description);
-    setHumidity(response.data.main.humidity);
-    setWind(response.data.wind.speed);
-    setIcon(
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
+    setWeatherData({
+      tempeature: Math.round(response.data.main.temp),
+      description: response.data.weather[0].description,
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+    });
+    setReady(true);
   }
 
-  axios.get(apiUrl).then(getTemperature);
-
-  return (
-    <div className="weather">
-      <div className="row">
-        <div className="temp-box col-8">
-          <h1>{props.city}</h1>
-          <h3>{formatDate()}</h3>
-          <h3>{description}</h3>
-          <h2 className="temp">{temperature} °F</h2>
+  if (ready) {
+    return (
+      <div className="weather">
+        <div className="row">
+          <div className="temp-box col-8">
+            <h1 className="text-capitalize">{props.city}</h1>
+            <h3>{formatDate()}</h3>
+            <h3 className="text-capitalize">{weatherData.description}</h3>
+            <h2 className="temp">{weatherData.temperature} °F</h2>
+          </div>
+          <div className="data-box col-4">
+            <h5>Humidity: {weatherData.humidity}%</h5>
+            <h5>Wind: {weatherData.wind}mph</h5>
+          </div>
         </div>
-        <div className="data-box col-4">
-          <h5>Humidity: {humidity}%</h5>
-          <h5>Wind: {wind}mph</h5>
-        </div>
+        <img
+          src={weatherData.icon}
+          alt="Weather icon"
+          className="current-icon"
+        />
       </div>
-      <img src={icon} alt="Weather icon" className="current-icon" />
-    </div>
-  );
+    );
+  } else {
+    axios.get(apiUrl).then(getWeather);
+    return "Loading Data...";
+  }
 }

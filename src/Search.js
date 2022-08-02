@@ -40,7 +40,7 @@ export default function Search() {
 
   let [city, setCity] = useState("");
   let [weather, setWeather] = useState(<Weather city="New York" />);
-  let [forecast, setForecast] = useState(<Forecast days={days} />);
+  let [forecast, setForecast] = useState("");
 
   function getCity(event) {
     event.preventDefault();
