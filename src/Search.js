@@ -27,7 +27,7 @@ export default function Search() {
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: Math.round(response.data.wind.speed),
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       lat: response.data.coord.lat,
       lon: response.data.coord.lon,
       ready: true,
@@ -39,7 +39,7 @@ export default function Search() {
       <div className="Weather">
         <form onSubmit={newCity}>
           <div className="row">
-            <div className="col-5">
+            <div className="col-9">
               <div className="form-group">
                 <input
                   className="form-control"
@@ -53,14 +53,11 @@ export default function Search() {
             <div className="col-3">
               <div className="form-group">
                 <input
-                  className="form-control"
+                  className="form-control coord"
                   type="submit"
                   value="Search 🔍"
                 />
               </div>
-            </div>
-            <div className="col-4">
-              <button className="coord">Current Location</button>
             </div>
           </div>
         </form>

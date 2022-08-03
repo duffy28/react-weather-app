@@ -1,20 +1,20 @@
 :root {
   --primary-color: rgb(139, 189, 238);
   --bg-color: rgb(233, 245, 255);
-  --box-shadow: 10px 10px 10px rgba(48, 143, 238, 0.1);
+  --box-shadow: 10px 10px 10px rgba(0, 42, 82, 0.2);
 }
 body {
   background: var(--bg-color);
 }
 .App {
-  width: 75%;
+  width: 55%;
   margin: 40px auto;
   padding: 80px;
-  border: 3px solid rgb(139, 189, 238);
+  border: 3px solid rgb(0, 42, 82);
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 10px 10px 10px rgba(48, 143, 238, 0.1);
-  color: rgba(8, 22, 37, 0.6);
+  box-shadow: var(--box-shadow);
+  color: rgba(0, 42, 82, 0.8);
 }
 .source-link {
   text-align: center;

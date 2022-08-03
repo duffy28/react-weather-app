@@ -1,3 +1,6 @@
 .low {
-  color: rgba(8, 22, 37, 0.5);
+  color: rgba(0, 42, 82, 0.5);
+}
+.icon {
+  margin: 15px 0;
 }

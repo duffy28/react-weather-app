@@ -1,7 +1,7 @@
 import React from "react";
 
 import Temperature from "./Temperature";
-
+import WeatherIcon from "./WeatherIcon";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -43,7 +43,13 @@ export default function Weather(props) {
           <h5>Wind: {props.data.wind} mph</h5>
         </div>
       </div>
-      <img src={props.data.icon} alt="Weather icon" className="current-icon" />
+      <div className="icon">
+        <WeatherIcon
+          code={props.data.icon}
+          alt={props.data.description}
+          size={100}
+        />
+      </div>
     </div>
   );
 }

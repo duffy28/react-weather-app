@@ -1,11 +1,11 @@
 ul {
-  background: rgb(248, 252, 255);
+  background: rgb(233, 245, 255);
   border: 1px solid rgb(233, 245, 255);
   border-radius: 10px;
   padding: 20px;
   text-align: center;
   list-style: none;
-  box-shadow: 10px 10px 10px rgba(48, 143, 238, 0.1);
+  box-shadow: 10px 10px 10px rgba(0, 42, 82, 0.1);
 }
 li {
   text-align: center;
