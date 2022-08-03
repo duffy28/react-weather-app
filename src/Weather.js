@@ -1,5 +1,7 @@
 import React from "react";
 
+import Temperature from "./Temperature";
+
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -34,7 +36,7 @@ export default function Weather(props) {
           <h1 className="text-capitalize">{props.data.city}</h1>
           <h3>{formatDate()}</h3>
           <h3 className="text-capitalize">{props.data.description}</h3>
-          <h2 className="temp">{props.data.temperature} °F</h2>
+          <Temperature temp={props.data.temperature} />
         </div>
         <div className="data-box col-4">
           <h5>Humidity: {props.data.humidity}%</h5>
