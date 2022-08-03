@@ -9,6 +9,11 @@ ul {
 }
 li {
   text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+li:hover {
+  background: white;
 }
 img {
   display: block;
