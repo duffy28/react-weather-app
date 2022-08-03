@@ -39,7 +39,7 @@ export default function Search() {
       <div className="Weather">
         <form onSubmit={newCity}>
           <div className="row">
-            <div className="col-9">
+            <div className="col-7">
               <div className="form-group">
                 <input
                   className="form-control"
@@ -50,7 +50,7 @@ export default function Search() {
                 />
               </div>
             </div>
-            <div className="col-3">
+            <div className="col-5">
               <div className="form-group">
                 <input
                   className="form-control coord"
